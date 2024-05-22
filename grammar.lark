@@ -1,0 +1,22 @@
+
+program: statement+
+
+?statement: action_statement | variable
+
+variable: NAME "=" action_statement
+
+?action_statement: sequence ";"
+
+sequence: action+
+
+?action: PLUS | MINUS | DUMP | primitive
+
+?primitive: NUMBER | NAME
+
+NUMBER: /\d+/
+PLUS: /\+/
+MINUS: /-/
+DUMP: /!>/
+NAME: /[a-zA-Z]+/
+
+%ignore /\s+/
